@@ -1,7 +1,15 @@
 .Notifications{
-  border-bottom: 2px solid #c7254e;
+  border: 2px dashed #c7254e;
   padding: 2rem;
   /*margin-bottom: 2rem;*/
+}
+
+[data-priority="default"] {
+  color: blue;
+}
+
+[data-priority="urgent"] {
+  color: red;
 }
 
 body {
