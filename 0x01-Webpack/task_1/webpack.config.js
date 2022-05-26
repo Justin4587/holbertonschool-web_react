@@ -24,6 +24,7 @@ module.exports = {
   devServer: {
     open: true
   },
+  mode: 'production',
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "public")
