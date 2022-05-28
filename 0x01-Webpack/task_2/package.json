@@ -2,7 +2,7 @@
   "name": "0x01-webpack",
   "version": "1.0.0",
   "description": "I'm not super happy with how typescript went. There seem to be some overlapping parts but I'm going to try and start this one anyway.",
-  "main": "index.js",
+  "main": "dashboard_main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack serve --mode development",
