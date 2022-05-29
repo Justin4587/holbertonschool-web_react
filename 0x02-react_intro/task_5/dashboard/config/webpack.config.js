@@ -12,7 +12,7 @@ module.exports = {
   },
   mode: 'development',
   output: {
-    filename: '[name].bundle.js',
+    filename: 'bundle.js',
     path: path.resolve('./dist')
   },
   resolve: {
