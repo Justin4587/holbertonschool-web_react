@@ -23,7 +23,7 @@ module.exports = {
     hot: true,
     open: true,
     compress: true,
-    port: 8564,
+    //port: 8564,
   },
   devtool: 'inline-source-map',
   plugins: [
