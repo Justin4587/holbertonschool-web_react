@@ -31,7 +31,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       name: "index.html",
       title: "Development",
-      //template: './dist/index.html'
+      //template: '../dist/index.html'
     }),
   ],
   performance: {
