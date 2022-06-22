@@ -9,11 +9,11 @@ const student1: Student = {
   firstName: 'Buddy',
   lastName: 'Turd',
   age: 15,
-  location: 'byMe',
+  location: 'Home',
 };
 
 const student2: Student = {
-  firstName: 'new',
+  firstName: 'Justin',
   lastName: 'me',
   age: 40,
   location: 'Texas',
