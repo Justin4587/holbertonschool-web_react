@@ -2,6 +2,8 @@ import logo from './horsefish.jpg';
 import './App.css';
 import { getFullYear, getFooterCopy } from './utils.js';
 
+// Adding a comment so I can clean up commits
+
 
 function App() {
   return (
