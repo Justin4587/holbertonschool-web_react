@@ -1,6 +1,8 @@
 import logo from './horsefish.jpg';
 import './App.css';
 
+// Adding a comment so I can clean up commits
+
 function App() {
   return (
     <div className="App">
