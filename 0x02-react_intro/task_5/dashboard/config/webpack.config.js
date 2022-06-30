@@ -13,13 +13,14 @@ module.exports = {
   mode: 'development',
   output: {
     filename: 'bundle.js',
-    path: path.resolve('./dist')
+    path: path.resolve(__dirname, '../dist')
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx']
   },
   devServer: {
-    //contentBase: path.resolve(__dirname, './dist'),
+    //contentBase: path.join(__dirname, './dist'),
+    static: ["../dist"],
     hot: true,
     open: true,
     compress: true,
@@ -28,10 +29,12 @@ module.exports = {
   devtool: 'inline-source-map',
   plugins: [
     new CleanWebpackPlugin(),
+    // new HtmlWebpackPlugin({ template: "./public/index.html" }),
     new HtmlWebpackPlugin({
       name: "index.html",
-      title: "Development",
-      //template: '../dist/index.html'
+      title: "Development Dash",
+      template: path.resolve(__dirname, '../index.html'),
+      favicon: path.resolve(__dirname, '../src/assets/favicon.ico')
     }),
   ],
   performance: {
@@ -58,9 +61,14 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       },
       {
-        test: /\.js|\.jsx$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"],
+          },
+        },
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,

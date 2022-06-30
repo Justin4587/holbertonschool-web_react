@@ -13,16 +13,6 @@
   }
 }
 
-.App-header {
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-size: calc(10px + 2vmin);
-  color: #c7254e;
-  border-bottom: 4px solid #c7254e;
-}
-
 .App-link {
   color: #61dafb;
 }
@@ -40,9 +30,4 @@
   text-align: left;
   margin: 2rem;
   min-height: 70vh;
-}
-
-.App-footer {
-  border-top: 4px solid #c7254e;
-  font-style: italic;
 }
