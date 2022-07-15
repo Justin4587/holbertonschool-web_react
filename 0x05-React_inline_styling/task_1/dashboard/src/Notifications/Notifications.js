@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from 'react';
-import './Notifications.css';
+// import './Notifications.css';
+import { StyleSheet, css } from 'aphrodite';
 import { getLatestNotification } from '../utils/utils';
 import closeIcon from '../assets/close-icon.png';
 import NotificationItem from './NotificationItem';
@@ -27,11 +28,11 @@ class Notifications extends Component {
     const { displayDrawer, listNotifications } = this.props;
   return (
     <Fragment>
-    <div className="menuItem">
+    <div className={css(styles.menuItem)}>
       <p>Your notifications</p>
     </div> 
     { displayDrawer && (
-    <div className="Notifications">
+    <div className={css(styles.Notifications)}>
       <button style={{
         position: "relative",
         float: "right",
@@ -54,6 +55,27 @@ class Notifications extends Component {
   )}
   </Fragment>
 )}};
+
+const styles = StyleSheet.create({
+  Notifications: {
+    border: '2px dashed #c7254e',
+    padding: '2rem',
+    float: 'right',
+  },
+
+  menuItem: {
+    textAlign: 'right',
+    marginRight: '.5rem',
+  },
+
+  default: {
+    color: 'blue',
+  },
+
+  urgent: {
+    color: 'red',
+  }
+})
 
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,

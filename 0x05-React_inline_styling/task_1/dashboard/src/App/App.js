@@ -93,12 +93,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   appLogo: {
-    height: '250px',
+    // display: 'flex',
+    justifyContent: 'space-between',
   },
   appBody: {
     textAlign: 'left',
     margin: '2rem',
-    height: '70vh',
+    height: 'auto',
   },
 
 });

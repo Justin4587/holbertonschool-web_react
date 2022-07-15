@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   appBody: {
     textAlign: 'left',
     margin: '2rem',
-    height: '70vh',
+    // height: '70vh',
   },
 })
 
