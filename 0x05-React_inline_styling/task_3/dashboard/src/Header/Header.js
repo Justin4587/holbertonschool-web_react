@@ -19,6 +19,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottom: '1px solid #c7254e',
     color: '#c7254e',
+    '@media (max-width: 900px)': {
+      zIndex: '-1',
+      // justifyContent: 'center',
+      display: 'inline-flex',
+      width: '85%',
+    }
   },
   title: {
     margin: 'auto',

@@ -57,15 +57,34 @@ class Notifications extends Component {
 )}};
 
 const styles = StyleSheet.create({
+  menuItem: {
+    textAlign: 'right',
+    marginRight: '.5rem',
+    '@media (max-width: 900px)': {
+      // border: 'none',
+      // backgroundColor: 'white',
+      // width: '85%',
+      // gridRow: '2',
+      // zIndex: '1000',
+      // height: '100vh',
+      display: 'none',
+    }
+  },
+
   Notifications: {
     border: '2px dashed #c7254e',
     padding: '2rem',
     float: 'right',
-  },
-
-  menuItem: {
-    textAlign: 'right',
-    marginRight: '.5rem',
+    '@media (max-width: 900px)': {
+      border: 'none',
+      backgroundColor: 'white',
+      width: '85%',
+      gridRow: '2',
+      zIndex: '1000',
+      // display: 'block',
+      height: '100vh',
+      overflow: 'hidden',
+    }
   },
 
   default: {
