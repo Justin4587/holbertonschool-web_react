@@ -50,7 +50,7 @@ class Login extends Component {
             <input className={css(styles.input)} name="email" id="email" value={this.state.email} onChange={this.handleChangeEmail}></input>
             <label htmlFor="password">Password: </label>
             <input className={css(styles.input)} name="password" id="password" value={this.state.password} onChange={this.handleChangePassword}></input>
-            <button className={css(styles.btn)} type="submit" onClick={this.handleLoginSubmit} disabled={!this.state.enableSubmit}>OK</button>
+            <input className={css(styles.btn)} type="submit" value='Login' onClick={this.handleLoginSubmit} disabled={!this.state.enableSubmit}></input>
           </form>
         </div>
       </Fragment>
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     '@media (max-width: 900px)': {
       border: '2px solid orange',
       backgroundColor: 'transparent',
-      width: '34px',
+      width: 'px',
     }
   }
 
