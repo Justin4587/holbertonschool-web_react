@@ -11,6 +11,7 @@ import { getLatestNotification } from "../utils/utils";
 import BodySection from '../BodySection/BodySection';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import WithLogging from '../HOC/WithLogging';
+import { AppContext, user, logOut } from './AppContext';
 // import logo from '../assets/horsefish.jpg';
 
 
@@ -30,8 +31,10 @@ class App extends Component {
     super(props);
     this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
-    this.state = { displayDrawer: false };
+    this.state = { displayDrawer: false, user: user, logOut: () => logOut, };
     this.proLogOut = this.proLogOut.bind(this);
+    this.logOut = this.logOut.bind(this);
+    this.logIn = this.logIn.bind(this);
   }
 
   handleDisplayDrawer() {
@@ -45,44 +48,61 @@ class App extends Component {
   componentDidMount() {
     window.addEventListener('keydown', this.proLogOut);
   }
+
   componentWillUnmount() {
     window.removeEventListener('keydown', this.proLogOut);
   }
+
   proLogOut(E) {
     if (E.ctrlKey && E.Key === 'h') {
       alert("Logging you out");
-      this.props.logOut();
+      this.state.logOut();
     }
   }
+
+  logIn(email, password) {
+    this.setState({ 
+      user: { email: email, password: password, isLoggedIn: true },
+    })
+  }
+
+  logOut() {
+    this.setState({
+      user: user,
+    })
+  }
+
   render() {
-    const { isLoggedIn } = this.props;
-    const { displayDrawer } = this.state;
+    const { isLoggedIn } = this.state.user;
+    const { displayDrawer, user, logOut } = this.state;
   return (
-    <Fragment>
-      <Notifications listNotifications={listNotifications}
-        displayDrawer={displayDrawer}
-        handleHideDrawer={this.handleHideDrawer}
-        handleDisplayDrawer={this.handleDisplayDrawer}
+    <AppContext.Provider value={{ user, logOut }}>
+      <Fragment>
+        <Notifications listNotifications={listNotifications}
+          displayDrawer={displayDrawer}
+          handleHideDrawer={this.handleHideDrawer}
+          handleDisplayDrawer={this.handleDisplayDrawer}
         />
-      <div className={css([styles.app, styles.appLogo])}>
-        <Header></Header>
-      </div>
-      <div className={css(styles.appBody)}>
-        { isLoggedIn ? (
-        <BodySectionWithMarginBottom title='Course list'>
-          <CourseList listCourses={listCourses} />
-        </BodySectionWithMarginBottom>
-        ) : (
-        <BodySectionWithMarginBottom title='Log in to continue'>
-          <Login />
-        </BodySectionWithMarginBottom>
-        ) }
-        <BodySection title='News from the School'>
-          <p>RANDOM TexT AEOSFUIJHBOAuiGFoub</p>
-        </BodySection>
-      </div>
-      <Footer />
-    </Fragment>
+        <div className={css([styles.app, styles.appLogo])}>
+          <Header></Header>
+        </div>
+        <div className={css(styles.appBody)}>
+          {user.isLoggedIn ? (
+            <BodySectionWithMarginBottom title='Course list'>
+              <CourseList listCourses={listCourses} />
+            </BodySectionWithMarginBottom>
+          ) : (
+            <BodySectionWithMarginBottom title='Log in to continue'>
+              <Login logIn={this.logIn} />
+            </BodySectionWithMarginBottom>
+          )}
+          <BodySection title='News from the School'>
+            <p>RANDOM TexT AEOSFUIJHBOAuiGFoub</p>
+          </BodySection>
+        </div>
+        <Footer />
+      </Fragment>
+    </AppContext.Provider>
     // <div className="App">
     //   <div className="App-header">
     //     <img src={logo} className="App-logo" alt="logo" />
@@ -94,12 +114,14 @@ class App extends Component {
     //     <label htmlFor="email">Email:</label>
     //     <input name="email" id="email"></input>
     //     <label htmlFor="password">Password: </label>
+  // }
     //     <input name="password" id="password"></input>
     //     <button>OK</button>
     //   </div>
     //   <div className="App-footer">
     //     <p>Copyright {getFullYear()} - {getFooterCopy(true)}</p>
     //   </div>
+  // }
     // </div>
   );
 }
@@ -122,13 +144,13 @@ const styles = StyleSheet.create({
 });
 
 App.propTypes = {
-  isLoggedIn: PropTypes.bool,
-  logOut: PropTypes.func,
+  // isLoggedIn: PropTypes.bool,
+  // logOut: PropTypes.func,
 };
 
 App.defaultProps = {
-  isLoggedIn: false,
-  logOut: () => void(0),
+  // isLoggedIn: false,
+  // logOut: () => void(0),
 };
 
 export default App;
