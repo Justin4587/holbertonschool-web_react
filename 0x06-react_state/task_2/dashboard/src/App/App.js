@@ -31,8 +31,8 @@ class App extends Component {
     super(props);
     this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
-    this.logOut = logOut.bind(this);
-    this.state = { displayDrawer: false, user: user, logOut: () => this.logOut() };
+    this.logOut = this.logOut.bind(this);
+    this.state = { displayDrawer: false, user, logOut: this.logOut };
     this.proLogOut = this.proLogOut.bind(this);
     this.logIn = this.logIn.bind(this);
   }
@@ -68,15 +68,16 @@ class App extends Component {
 
   logOut() {
     this.setState({
-      user,
+      user: user,
     })
   }
 
   render() {
     const { isLoggedIn } = this.state.user;
     const { user, logOut } = this.state;
+    const value = {user, logOut}
   return (
-    <AppContext.Provider value={{ user: user, logOut: logOut }}>
+    <AppContext.Provider value={ value }>
       <Fragment>
         <Notifications listNotifications={listNotifications}
           displayDrawer={this.state.displayDrawer}

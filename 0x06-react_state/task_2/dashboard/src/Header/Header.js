@@ -3,17 +3,18 @@ import React, { Component } from "react";
 import { StyleSheet, css } from 'aphrodite';
 import logo from '../assets/horsefish.jpg';
 import { AppContext, user, logOut} from '../App/AppContext';
+import { PropTypes } from "prop-types";
 
 
 
 class Header extends Component {
-constructor(props) {
-  super(props);
-  this.logOut = logOut.bind(this);
-
-}
+  static contextType = AppContext;
+  logOut = logOut.bind(this);
+  
   render() {
-    // const {user, logOut} = this.state;
+    let {user, logOut} = this.context;
+    // const {user,logOut } = this.state;
+    // const value = {user, logOut};
     return (
       <>
         <div className={css(styles.header)}>
@@ -23,7 +24,7 @@ constructor(props) {
         {
           user.isLoggedIn === true && (
             <div className={css(styles.welcome)} id='logoutSection'>
-              Welcome {user.email} <span className={css(styles.logout)} onClick={this.logOut}>
+              Welcome {user.email} <span className={css(styles.logout)} onClick={logOut}>
                 (logout)
               </span>
             </div>
