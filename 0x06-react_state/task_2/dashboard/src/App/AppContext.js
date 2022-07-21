@@ -11,4 +11,5 @@ export const logOut = () => {};
 export const AppContext = createContext({
   user: user,
   logOut: logOut,
-})
+});
+

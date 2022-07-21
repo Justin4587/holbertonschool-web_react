@@ -31,9 +31,9 @@ class App extends Component {
     super(props);
     this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
-    this.state = { displayDrawer: false, user: user, logOut: () => logOut, };
+    this.logOut = logOut.bind(this);
+    this.state = { displayDrawer: false, user: user, logOut: () => this.logOut() };
     this.proLogOut = this.proLogOut.bind(this);
-    this.logOut = this.logOut.bind(this);
     this.logIn = this.logIn.bind(this);
   }
 
@@ -68,18 +68,18 @@ class App extends Component {
 
   logOut() {
     this.setState({
-      user: user,
+      user,
     })
   }
 
   render() {
     const { isLoggedIn } = this.state.user;
-    const { displayDrawer, user, logOut } = this.state;
+    const { user, logOut } = this.state;
   return (
-    <AppContext.Provider value={{ user, logOut }}>
+    <AppContext.Provider value={{ user: user, logOut: logOut }}>
       <Fragment>
         <Notifications listNotifications={listNotifications}
-          displayDrawer={displayDrawer}
+          displayDrawer={this.state.displayDrawer}
           handleHideDrawer={this.handleHideDrawer}
           handleDisplayDrawer={this.handleDisplayDrawer}
         />
@@ -87,7 +87,7 @@ class App extends Component {
           <Header></Header>
         </div>
         <div className={css(styles.appBody)}>
-          {user.isLoggedIn ? (
+          {isLoggedIn ? (
             <BodySectionWithMarginBottom title='Course list'>
               <CourseList listCourses={listCourses} />
             </BodySectionWithMarginBottom>
