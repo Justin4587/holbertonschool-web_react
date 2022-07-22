@@ -1,0 +1,71 @@
+{
+  "name": "dashboard",
+  "homepage": "https://Justin4587.github.io/",
+  "version": "0.1.0",
+  "private": true,
+  "description": "I'm not super happy with how typescript went. There seem to be some overlapping parts but I'm going to try and start this one anyway.",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "build-webpack": "webpack --mode production --config config/webpack.config.js",
+    "start": "webpack-dev-server --mode development --config config/webpack.config.js",
+    "start-react": "react-scripts start --config config/webpack.config.js",
+    "build-react": "react-scripts build",
+    "predeploy": "npm run build --config config/webpack.config.js",
+    "deploy": "gh-pages -d build --config config/webpack.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
+    "babel-jest": "^28.1.0",
+    "babel-loader": "^8.2.5",
+    "cheerio": "=1.0.0-rc.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "image-webpack-loader": "^8.1.0",
+    "jest": "^28.1.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/user-event": "^13.5.0",
+    "aphrodite": "^2.4.0",
+    "ci": "^2.2.0",
+    "gh-pages": "^4.0.0",
+    "prop-types": "^15.8.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
