@@ -1,6 +1,5 @@
-import { list } from 'immutable';
-import { List } from './node_modules/immutable/dist/immutable';
-
+import pkg from 'immutable';
+const { List } = pkg;
 
 export function getListObject(array) {
   return List(array);
