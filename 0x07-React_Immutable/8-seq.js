@@ -6,9 +6,6 @@ export default function printBestStudents(object) {
       score: upper.score,
       firstName: upper.firstName.charAt(0).toUpperCase() + upper.firstName.slice(1),
       lastName: upper.lastName.charAt(0).toUpperCase() + upper.lastName.slice(1),
-      }),
-    );
-
+    }),);
   console.log(top30.toObject());
-
 }
