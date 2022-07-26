@@ -1,4 +1,5 @@
 import pkg from 'immutable';
+
 const { List } = pkg;
 
 export function getListObject(array) {
