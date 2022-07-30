@@ -1,0 +1,16 @@
+#CourseList {
+  width: 80%;
+  border: 1px solid gray;
+}
+
+#CourseList th[colspan="2"] {
+  text-align: center;
+}
+
+#CourseList th {
+  text-align: left;
+}
+
+#CourseList td {
+  text-align: left;
+}
