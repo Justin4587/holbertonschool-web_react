@@ -45,22 +45,22 @@ const oneTrueList = [
 ];
 
 describe('courseReducer', () => {
-  it('verifies default state returns empty array', () => {
+  it('verifies empty array', () => {
     const res = courseReducer(undefined, 'no_action');
     expect(res).toEqual([]);
   });
 
-  it('verifies fetchCourseSuccess returns data passed', () => {
+  it('returns data passed', () => {
     const res = courseReducer([], fetchCourseSuccess(oneTrueList));
     expect(res).toEqual(falseList);
   });
 
-  it('verifies selectCourse returns data with isSelected as true', () => {
+  it('isSelected as true', () => {
     const res = courseReducer(falseList, selectCourse(1));
     expect(res).toEqual(oneTrueList);
   });
 
-  it('verifies unSelectCourse returns data with isSelected as false', () => {
+  it('isSelected as false', () => {
     const res = courseReducer(oneTrueList, unSelectCourse(1));
     expect(res).toEqual(falseList);
   });
