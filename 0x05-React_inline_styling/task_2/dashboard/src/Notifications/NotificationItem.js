@@ -1,24 +1,48 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { StyleSheet, css } from 'aphrodite';
+
 
 
 class NotificationItem extends PureComponent {
   render() {
     const { type, html, value, markAsRead, id='0' } = this.props;
+    const style = css(type === 'urgent' ? styles.urgent : styles.default);
     return (
       <>
         {value
-          ? <li data-notification-type={type} onClick={() => markAsRead(id)}>{value}</li>
+          ? <li className={style} data-notification-type={type} onClick={() => markAsRead(id)}>{value}</li>
           : null
         }
         {html
-          ? <li data-notification-type={type} dangerouslySetInnerHTML={html} onClick={() => markAsRead(id)}></li>
+          ? <li className={style} data-notification-type={type} dangerouslySetInnerHTML={html} onClick={() => markAsRead(id)}></li>
           : null
         }
       </>
     );
   }
 };
+
+const styles = StyleSheet.create({
+  Notifications: {
+    border: '2px dashed #c7254e',
+    padding: '2rem',
+    float: 'right',
+  },
+
+  menuItem: {
+    textAlign: 'right',
+    marginRight: '.5rem',
+  },
+
+  default: {
+    color: 'blue',
+  },
+
+  urgent: {
+    color: 'red',
+  }
+})
 
 NotificationItem.defaultProps = {
   type: 'default',

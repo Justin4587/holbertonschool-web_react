@@ -21,40 +21,42 @@ class Notifications extends Component {
     console.log(message)
   }
   shouldComponentUpdate(nextProps, nextState) {
-    return( nextProps.listNotifications.length > this.props.listNotifications.length);
+    return (nextProps.listNotifications.length > this.props.listNotifications.length);
   }
 
   render() {
     const { displayDrawer, listNotifications } = this.props;
-  return (
-    <Fragment>
-    <div className={css(styles.menuItem)}>
-      <p>Your notifications</p>
-    </div> 
-    { displayDrawer && (
-    <div className={css(styles.Notifications)}>
-      <button style={{
-        position: "relative",
-        float: "right",
-        border: "none",
-      }}
-      aria-label='Close'
-      onClick={() => console.log('Close button has been clicked')}>
-        <img src={closeIcon} alt="close-icon" width="10" height="10"></img>
-      </button>
-      <p>Here is the list of notifications</p>
-      <ul>
-        { listNotifications.length === 0 && (
-          <NotificationItem value="No new notifications for now"/>
+    return (
+      <Fragment>
+        <div className={css(styles.menuItem)}>
+          <p>Your notifications</p>
+        </div>
+        {displayDrawer && (
+          <div className={css(styles.Notifications)}>
+            <button style={{
+              position: "relative",
+              float: "right",
+              border: "none",
+            }}
+              aria-label='Close'
+              onClick={() => console.log('Close button has been clicked')}>
+              <img src={closeIcon} alt="close-icon" width="10" height="10"></img>
+            </button>
+            <p>Here is the list of notifications</p>
+            <ul>
+              {listNotifications.length === 0 && (
+                <NotificationItem value="No new notifications for now" />
+              )}
+              {listNotifications.map(({ type, value, html, id }) => (
+                <NotificationItem key={id} type={type} value={value} html={html} markAsRead={this.markAsRead} />
+              ))}
+            </ul>
+          </div>
         )}
-        { listNotifications.map(({ type, value, html, id }) => (
-          <NotificationItem key={id} type={type} value={value} html={html} markAsRead={this.markAsRead}  />
-        ))}
-      </ul>
-    </div>
-  )}
-  </Fragment>
-)}};
+      </Fragment>
+    )
+  }
+};
 
 const styles = StyleSheet.create({
   menuItem: {
